@@ -1,0 +1,1 @@
+http://cs5200fall2018dalonzo-env.km84ptkwcf.us-east-2.elasticbeanstalk.com http://cs5200fall2018dalonzo-env.km84ptkwcf.us-east-2.elasticbeanstalk.com/api/hello/string http://cs5200fall2018dalonzo-env.km84ptkwcf.us-east-2.elasticbeanstalk.com/api/hello/object 
