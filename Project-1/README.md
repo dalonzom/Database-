@@ -3,7 +3,7 @@
 ## Submission Deadline: Sunday September 23, 2018 at 11:59PM
 
 ### Updated Submission Guidelines
-* Add a file called *URLs.txt* to your repository which will consist of all the AWS urls:
+* Please do not submit your spring boot application. Only Add a file called *URLs.txt* to your repository which will consist of all the AWS urls:
 >* http://cs5200-spring2018-annunziato.us-west-2.elasticbeanstalk.com/
 >* http://cs5200-spring2018-annunziato.us-west-2.elasticbeanstalk.com/api/hello/string
 >* http://cs5200-spring2018-annunziato.us-west-2.elasticbeanstalk.com/api/hello/object
