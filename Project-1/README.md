@@ -1,6 +1,6 @@
 ## Submission Instructions:
 
-## Submission Deadline: Sunday September 23, 2018 at 11:59PM
+## Submission Deadline: Sunday September 16, 2018 at 11:59PM
 
 ### Updated Submission Guidelines
 * Please do not submit your spring boot application. Only Add a file called *URLs.txt* to your repository which will consist of all the AWS urls:
