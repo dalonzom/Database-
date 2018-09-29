@@ -1,0 +1,7 @@
+------------------------------------RUBRIC------------------------------------
+
+URL to AWS root context works, e.g., /index.html:				25 points.
+URL to /api/hello/string works:									25 Points.
+URL to /api/hello/object works:									25 Points.
+All URLs are there as specified by Deliverable section:			25 Points.
+Late Submission:											Verification Pending.
