@@ -1,3 +1,18 @@
+
+DROP TABLE IF EXISTS person; 
+DROP TABLE IF EXISTS user; 
+DROP TABLE IF EXISTS developer; 
+DROP TABLE IF EXISTS phone; 
+DROP TABLE IF EXISTS address; 
+DROP TABLE IF EXISTS priviledge; 
+DROP TABLE IF EXISTS Role; 
+DROP TABLE IF EXISTS website; 
+DROP TABLE IF EXISTS page; 
+DROP TABLE IF EXISTS widget; 
+DROP TABLE IF EXISTS page_role; 
+DROP TABLE IF EXISTS page_priviledge; 
+DROP TABLE IF EXISTS website_role; 
+DROP TABLE IF EXISTS website_privilege; 
 CREATE TABLE `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
