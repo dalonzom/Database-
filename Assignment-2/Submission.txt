@@ -2,4 +2,4 @@ Connection String: Provider=MySQL Provider;server=cs5200-fall2018-dalonzo.cdbytb
 Hostname: cs5200-fall2018-dalonzo.cdbytbcvrrjd.us-east-2.rds.amazonaws.com
 Port: 3306
 Username: dalonzom
-Password: Pandora1234!
+Password: Redfishbluefish2
