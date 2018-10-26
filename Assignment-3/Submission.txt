@@ -1,0 +1,5 @@
+Connection String: Provider=MySQL Provider;server=cs5200-fall2018-dalonzo.cdbytbcvrrjd.us-east-2.rds.amazonaws.com;User Id=dalonzom;password=Pandora1234!;database=cs5200;
+Hostname: cs5200-fall2018-dalonzo.cdbytbcvrrjd.us-east-2.rds.amazonaws.com
+Port: 3306
+Username: dalonzom
+Password: Redfishbluefish2
