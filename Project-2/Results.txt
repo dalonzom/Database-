@@ -1,0 +1,4 @@
+Link "Insert a static hello message works":	25 points
+Link "Insert a parameterized hello message": 25 points
+Link "Retrieve all messages works.":			25 points
+A Submission markdown file is generated:					25 points
