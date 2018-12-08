@@ -1,12 +1,16 @@
+use cs5200; 
 
+/*Drop all tables, views, and triggers if they exist*/ 
 SET FOREIGN_KEY_CHECKS = 0;
+
+
 DROP TABLE IF EXISTS person; 
 DROP TABLE IF EXISTS user; 
 DROP TABLE IF EXISTS developer; 
 DROP TABLE IF EXISTS phone; 
 DROP TABLE IF EXISTS address; 
 DROP TABLE IF EXISTS priviledge; 
-DROP TABLE IF EXISTS Role; 
+DROP TABLE IF EXISTS roles; 
 DROP TABLE IF EXISTS website; 
 DROP TABLE IF EXISTS page; 
 DROP TABLE IF EXISTS widget; 
@@ -14,6 +18,11 @@ DROP TABLE IF EXISTS page_role;
 DROP TABLE IF EXISTS page_priviledge; 
 DROP TABLE IF EXISTS website_role; 
 DROP TABLE IF EXISTS website_privilege; 
+DROP VIEW developer_role_and_privileges; 
+
+
+
+
 CREATE TABLE `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
@@ -117,7 +126,7 @@ CREATE TABLE `priviledge` (
   PRIMARY KEY (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `Roles` (
+CREATE TABLE `roles` (
   `roles` varchar(45) NOT NULL,
   PRIMARY KEY (`roles`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -142,10 +151,10 @@ CREATE TABLE `website_role` (
   `websiteRole_developer_fk` int(11) DEFAULT NULL,
   `websiteRole_website_fk` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `role_fk_idx` (`roles`),
+  KEY `role_fk_idx` (`role`),
   KEY `websiteRole_developer_fk_idx` (`websiteRole_developer_fk`),
   KEY `websiteRole_website_fk_idx` (`websiteRole_website_fk`),
-  CONSTRAINT `role_fk` FOREIGN KEY (`role`) REFERENCES `Roles` (`roles`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `role_fk` FOREIGN KEY (`role`) REFERENCES `roles` (`roles`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `websiteRole_developer_fk` FOREIGN KEY (`websiteRole_developer_fk`) REFERENCES `developer` (`developer_person_generalization`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `websiteRole_website_fk` FOREIGN KEY (`websiteRole_website_fk`) REFERENCES `website` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
@@ -177,3 +186,16 @@ CREATE TABLE `page_role` (
   CONSTRAINT `pageRole_page_fk` FOREIGN KEY (`pageRole_page_fk`) REFERENCES `page` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `page_role` FOREIGN KEY (`role`) REFERENCES `Roles` (`roles`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
+
+
+/*Views*/ 
+CREATE VIEW `developer_role_and_privileges` AS
+SELECT p.first_name, p.last_name, p.username, p.email, w_role.role, w.name, w.updated,w.visits, w_priv.priviledge_website, page.title, page.views, page.updatedDate,  p_priv.priviledge FROM person p 
+JOIN developer d ON d.developer_person_generalization = p.id
+JOIN website_role w_role ON w_role.websiteRole_developer_fk = p.id
+JOIN website w ON w_role.websiteRole_website_fk = w.id
+JOIN website_privilege w_priv ON w_priv.webPriviledge_developer_fk = w_role.websiteRole_developer_fk AND w_priv.webPriviledge_website_fk = w_role.websiteRole_website_fk
+JOIN page ON page.page_website_fk = w.id
+JOIN page_role p_role ON p_role.pageRole_developer_fk = p.id AND p_role.pageRole_page_fk = page.id
+JOIN page_priviledge p_priv ON p_priv.pagePriviledge_developer_fk = p_role.pageRole_developer_fk AND p_priv.pagePrivildege_page_fk = p_role.pageRole_page_fk;
+/*Triggers*/ 
